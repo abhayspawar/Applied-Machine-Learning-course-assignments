@@ -1,0 +1,94 @@
+Using TensorFlow backend.
+2017-04-29 06:33:03.783656: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-04-29 06:33:03.785329: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-04-29 06:33:03.785359: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-04-29 06:33:03.785373: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-04-29 06:33:03.785384: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2017-04-29 06:33:04.081847: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:8a:00.0
+Total memory: 11.20GiB
+Free memory: 11.13GiB
+2017-04-29 06:33:04.081931: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2017-04-29 06:33:04.081949: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2017-04-29 06:33:04.081971: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:8a:00.0)
+Summary of model without batch normalization:
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_1 (Conv2D)            (None, 30, 30, 32)        896       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 15, 15, 32)        0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 13, 13, 32)        9248      
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 6, 6, 32)          0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 4, 4, 32)          9248      
+_________________________________________________________________
+max_pooling2d_3 (MaxPooling2 (None, 2, 2, 32)          0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 128)               0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 64)                8256      
+_________________________________________________________________
+dense_2 (Dense)              (None, 10)                650       
+=================================================================
+Total params: 28,298
+Trainable params: 28,298
+Non-trainable params: 0
+_________________________________________________________________
+None
+Test loss: 0.573
+Test Accuracy: 0.842
+summary of model with batch normalization
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_4 (Conv2D)            (None, 28, 28, 32)        2432      
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 28, 28, 32)        128       
+_________________________________________________________________
+activation_1 (Activation)    (None, 28, 28, 32)        0         
+_________________________________________________________________
+max_pooling2d_4 (MaxPooling2 (None, 14, 14, 32)        0         
+_________________________________________________________________
+conv2d_5 (Conv2D)            (None, 12, 12, 32)        9248      
+_________________________________________________________________
+batch_normalization_2 (Batch (None, 12, 12, 32)        128       
+_________________________________________________________________
+activation_2 (Activation)    (None, 12, 12, 32)        0         
+_________________________________________________________________
+max_pooling2d_5 (MaxPooling2 (None, 6, 6, 32)          0         
+_________________________________________________________________
+conv2d_6 (Conv2D)            (None, 4, 4, 32)          9248      
+_________________________________________________________________
+batch_normalization_3 (Batch (None, 4, 4, 32)          128       
+_________________________________________________________________
+activation_3 (Activation)    (None, 4, 4, 32)          0         
+_________________________________________________________________
+max_pooling2d_6 (MaxPooling2 (None, 2, 2, 32)          0         
+_________________________________________________________________
+flatten_2 (Flatten)          (None, 128)               0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 64)                8256      
+_________________________________________________________________
+batch_normalization_4 (Batch (None, 64)                256       
+_________________________________________________________________
+activation_4 (Activation)    (None, 64)                0         
+_________________________________________________________________
+dense_4 (Dense)              (None, 64)                4160      
+_________________________________________________________________
+batch_normalization_5 (Batch (None, 64)                256       
+_________________________________________________________________
+activation_5 (Activation)    (None, 64)                0         
+_________________________________________________________________
+dense_5 (Dense)              (None, 10)                650       
+=================================================================
+Total params: 34,890
+Trainable params: 34,442
+Non-trainable params: 448
+_________________________________________________________________
+None
+Test Accuracy: 0.905
